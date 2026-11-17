@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#FFF3F7">
+<title>识字消消乐 · TV 版</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+    <div class="deco deco1"></div>
+    <div class="deco deco2"></div>
+    <div class="deco deco3"></div>
+
+    <div id="screen">
+      <section id="leftTop">
+        <div class="top-row">
+          <div id="tvTitle" class="title-pill">🎈 识字消消乐 · 数字</div>
+          <button id="btnAdvanced" class="adv-btn focusable" data-focus type="button">🎧 进阶</button>
+        </div>
+
+        <div id="modeBar" class="mode-bar">
+          <button class="mode-btn focusable" data-mode="NUMBER" data-focus type="button">数字</button>
+          <button class="mode-btn focusable" data-mode="LETTER" data-focus type="button">字母</button>
+          <button class="mode-btn focusable" data-mode="HANZI" data-focus type="button">汉字</button>
+          <button class="mode-btn focusable" data-pack="MATH" data-focus type="button">口算</button>
+          <button class="mode-btn focusable" data-pack="ENGLISH" data-focus type="button">英语</button>
+          <button class="mode-btn focusable" data-pack="PINYIN" data-focus type="button">拼音</button>
+          <button class="mode-btn focusable" data-pack="COMMON" data-focus type="button">常识</button>
+          <button class="mode-btn focusable" data-mode="K12" data-focus type="button">题库</button>
+          <button class="mode-btn focusable" data-stats="1" data-focus type="button">档案</button>
+        </div>
+
+        <div id="k12Bar" class="k12-bar off">
+          <div class="k12-row" id="k12SubjectRow">
+            <span class="k12-label">学科</span>
+            <button class="k12-btn focusable selected" data-subject="ALL" data-focus type="button">全部</button>
+            <button class="k12-btn focusable" data-subject="数学" data-focus type="button">数学</button>
+            <button class="k12-btn focusable" data-subject="英语" data-focus type="button">英语</button>
+            <button class="k12-btn focusable" data-subject="语文" data-focus type="button">语文</button>
+            <button class="k12-btn focusable" data-subject="物理" data-focus type="button">物理</button>
+            <button class="k12-btn focusable" data-subject="科学" data-focus type="button">科学</button>
+          </div>
+          <div class="k12-row" id="k12GradeRow">
+            <span class="k12-label">年级</span>
+            <button class="k12-btn focusable selected" data-grade="all" data-focus type="button">全部</button>
+            <button class="k12-btn focusable" data-grade="1" data-focus type="button">一年级</button>
+            <button class="k12-btn focusable" data-grade="2" data-focus type="button">二年级</button>
+            <button class="k12-btn focusable" data-grade="3" data-focus type="button">三年级</button>
+            <button class="k12-btn focusable" data-grade="4" data-focus type="button">四年级</button>
+          </div>
+          <div class="k12-row" id="k12GradeRow2">
+            <span class="k12-label"></span>
+            <button class="k12-btn focusable" data-grade="5" data-focus type="button">五年级</button>
+            <button class="k12-btn focusable" data-grade="6" data-focus type="button">六年级</button>
+            <button class="k12-btn focusable" data-grade="7" data-focus type="button">七年级</button>
+            <button class="k12-btn focusable" data-grade="8" data-focus type="button">八年级</button>
+            <button class="k12-btn focusable" data-grade="9" data-focus type="button">九年级</button>
+          </div>
+          <div class="k12-row" id="k12TermRow">
+            <span class="k12-label">学期</span>
+            <button class="k12-btn focusable selected" data-term="all" data-focus type="button">全学年</button>
+            <button class="k12-btn focusable" data-term="上" data-focus type="button">上册</button>
+            <button class="k12-btn focusable" data-term="下" data-focus type="button">下册</button>
+          </div>
+        </div>
+
+        <div id="gradeBar" class="grade-bar off">
+          <button class="grade-btn focusable selected" data-grade="all" data-focus type="button">全部</button>
+          <button class="grade-btn focusable" data-grade="g1" data-focus type="button">一年级</button>
+          <button class="grade-btn focusable" data-grade="g2" data-focus type="button">二年级</button>
+          <button class="grade-btn focusable" data-grade="g3" data-focus type="button">三年级</button>
+          <button class="grade-btn focusable" data-grade="g4" data-focus type="button">四年级</button>
+          <button class="grade-btn focusable" data-grade="g5" data-focus type="button">五年级</button>
+          <button class="grade-btn focusable" data-grade="g6" data-focus type="button">六年级</button>
+          <button class="grade-btn focusable" data-grade="orig" data-focus type="button">原版</button>
+        </div>
+
+        <div id="targetCard" class="target-card">
+          <div id="tvTargetLabel" class="target-label">👆 点「开始」，我来告诉你找哪个～</div>
+          <div id="tvTarget" class="target-char">?</div>
+          <div id="tvTargetPinyin" class="target-pinyin"></div>
+          <div id="quizQuestion" class="quiz-question hidden"></div>
+          <div id="quizExplain" class="quiz-explain hidden"></div>
+          <div class="progress-wrap">
+            <div id="progressBar" class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+            <div id="tvProgress" class="progress-text">已消除 0 / 20</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="boardArea">
+        <div id="board" class="board"></div>
+      </section>
+
+      <section id="leftBottom">
+        <div id="tvHint" class="hint">准备好了吗？点一下开始吧！</div>
+        <div class="action-row">
+          <button id="btnStart" class="btn-primary focusable" data-focus type="button">开始</button>
+          <button id="btnReplay" class="btn-soft focusable" data-focus type="button">再听一次</button>
+        </div>
+      </section>
+    </div>
+
+    <div id="remoteHint" class="remote-hint">方向键移动 · OK 确认 · 菜单键切换布局 · 返回键退出</div>
+    <div id="fitControls">
+      <button id="btnFitMinus" class="fit-btn focusable" data-focus type="button">－ 缩小画面</button>
+      <button id="btnFitPlus" class="fit-btn focusable" data-focus type="button">＋ 放大画面</button>
+    </div>
+
+    <!-- 题库答题反馈浮层：答题后用整屏空间完整展示答案与解析 -->
+    <div id="answerOverlay" class="answer-overlay hidden" role="dialog" aria-modal="true">
+      <div class="answer-box">
+        <div id="answerVerdict" class="answer-verdict">✅ 答对啦！</div>
+        <div id="answerTarget" class="answer-target"></div>
+        <div id="answerExplain" class="answer-explain"></div>
+        <div class="answer-actions">
+          <button id="btnAnswerReplay" class="btn-soft focusable" data-focus type="button">🔊 再听解析</button>
+          <button id="btnAnswerNext" class="btn-primary focusable" data-focus type="button">下一题 →</button>
+        </div>
+        <div class="answer-tip">按 OK 或方向键选择 · 返回键进入下一题</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="statsPanel" class="panel hidden" role="dialog" aria-modal="true">
+  <div class="panel-box">
+    <div class="panel-title">📊 学习档案</div>
+    <div id="statsBody" class="stats-body"></div>
+    <div class="panel-actions">
+      <button id="btnStatsClose" class="btn-soft focusable" data-focus type="button">返回游戏</button>
+    </div>
+  </div>
+</div>
+
+<div id="exitDialog" class="dialog hidden" role="dialog" aria-modal="true">
+  <div class="dialog-box">
+    <div class="dialog-title">要退出游戏吗？</div>
+    <div class="dialog-sub">按「返回」继续玩，选择「退出」离开</div>
+    <div class="dialog-actions">
+      <button id="btnStay" class="btn-soft focusable" data-focus type="button">继续游戏</button>
+      <button id="btnExit" class="btn-primary focusable" data-focus type="button">退出</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="data.js"></script>
+<script src="packs.js"></script>
+<script src="k12bank.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
